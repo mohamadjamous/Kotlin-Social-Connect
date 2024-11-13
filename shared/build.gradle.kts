@@ -31,6 +31,9 @@ kotlin {
             implementation(libs.kotlin.test)
         }
     }
+
+    tasks.register("testClasses")
+
 }
 
 android {
