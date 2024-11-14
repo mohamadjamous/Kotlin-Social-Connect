@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    id("com.google.devtools.ksp") version "1.9.10-1.0.13" // Depends on your kotlin version
+    id("com.google.devtools.ksp") version "1.9.10-1.0.13"
+    alias(libs.plugins.googleGmsGoogleServices) // Depends on your kotlin version
 }
 
 android {
@@ -51,6 +52,9 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation("androidx.compose.material:material:1.4.3")
     implementation(libs.androidx.activity.compose)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.storage)
     debugImplementation(libs.compose.ui.tooling)
 
     implementation("io.github.raamcosta.compose-destinations:core:1.8.38-beta")

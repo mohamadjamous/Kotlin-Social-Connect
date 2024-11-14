@@ -24,6 +24,11 @@ class SignUpViewModel: ViewModel() {
         uiState = uiState.copy(password = password)
     }
 
+    // TODO implement signup user with firebase
+    fun signupUser(username: String, email: String, password: String){
+
+    }
+
 }
 
 data class SignUpUiState(

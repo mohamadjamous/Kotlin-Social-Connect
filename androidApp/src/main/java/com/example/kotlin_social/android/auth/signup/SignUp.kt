@@ -3,6 +3,7 @@ package com.example.kotlin_social.android.auth.signup
 import androidx.compose.runtime.Composable
 import com.example.kotlin_social.android.auth.SignUpScreen
 import com.example.kotlin_social.android.auth.SignUpViewModel
+import com.example.kotlin_social.android.auth.destinations.LoginDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.koinViewModel
@@ -19,8 +20,10 @@ fun SignUp(
         onUsernameChange = viewModel::updateUsername,
         onEmailChange = viewModel::updateEmail,
         onPasswordChange = viewModel::updatePassword,
-        onNavigateToLogin = { /*TODO*/ },
-        onNavigateToHome = { /*TODO*/ }) {
+        onNavigateToLogin = {
+                            navigator.navigate(LoginDestination)
+        },
+        onNavigateToHome = {  }) {
 
     }
 }

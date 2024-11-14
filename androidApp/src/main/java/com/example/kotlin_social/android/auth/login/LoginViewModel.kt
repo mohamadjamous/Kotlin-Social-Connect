@@ -41,6 +41,11 @@ class LoginViewModel(): ViewModel() {
     fun updatePassword(input: String){
         uiState = uiState.copy(password = input)
     }
+
+    // TODO implement user login firebase
+    fun loginUser(email: String, password: String){
+
+    }
 }
 
 data class LoginUiState(

@@ -47,7 +47,7 @@ fun SignUpScreen(
     onPasswordChange: (String) -> Unit,
     onNavigateToLogin: () -> Unit,
     onNavigateToHome: () -> Unit,
-    onSignUpClick: () -> Unit
+    onSignUpClick: () -> Unit,
 ) {
     val context = LocalContext.current
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "780920594359",
+    "project_id": "kotlin-social-ed138",
+    "storage_bucket": "kotlin-social-ed138.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780920594359:android:efed69882bf7b28df29232",
+        "android_client_info": {
+          "package_name": "com.example.kotlin_social.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl0gh57QQasae-jq65_ZUICU6FYV3v2bA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
