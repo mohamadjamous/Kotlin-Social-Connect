@@ -29,17 +29,17 @@ class AuthRepository {
         }
     }
 
-    // Sign In method
-    suspend fun signIn(
-        email: String,
-        password: String
-    ): Result<AuthResultData> {
-        return try {
-            // Sign in the user with email and password
-            val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
-            Result.success(AuthResultData(authResult.user, "Sign in successful"))
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
+//    // Sign In method
+//    suspend fun signIn(
+//        email: String,
+//        password: String
+//    ): Result<AuthResultData> {
+//        return try {
+//            // Sign in the user with email and password
+//            val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+//            Result.success(AuthResultData(authResult.user, "Sign in successful"))
+//        } catch (e: Exception) {
+//            Result.failure(e)
+//        }
+//    }
 }
