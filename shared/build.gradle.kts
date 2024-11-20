@@ -1,18 +1,22 @@
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.googleGmsGoogleServices)
+    kotlin("multiplatform")
+    id("com.android.library")
+
+    //Kotlinx Serialization
+    kotlin("plugin.serialization") version "1.9.10"
 }
 
 kotlin {
+    task("testClasses")
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "17"
             }
         }
     }
-    
+    jvmToolchain(17)
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -20,28 +24,27 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
-            isStatic = true
         }
     }
 
     //dependencies versions
     val coroutinesVersion = "1.6.4"
     val koinVersion = "3.3.2"
+    val ktorVersion = "2.2.1"
     val datastoreVersion = "1.1.1"
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                api("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+
                 api("io.insert-koin:koin-core:$koinVersion")
 
                 implementation("androidx.datastore:datastore-preferences-core:$datastoreVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0-RC.2")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
-
-                implementation(libs.firebase.auth)
-                implementation(libs.firebase.firestore)
-                implementation(libs.firebase.auth.ktx)
             }
         }
 
@@ -56,6 +59,8 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api("io.insert-koin:koin-android:$koinVersion")
+                implementation("io.ktor:ktor-client-android:$ktorVersion")
+
                 api("androidx.datastore:datastore-preferences:$datastoreVersion")
             }
         }
@@ -74,6 +79,7 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
 
             dependencies{
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
         }
         val iosX64Test by getting
@@ -86,10 +92,6 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
     }
-
-
-    tasks.register("testClasses")
-
 }
 
 android {
@@ -98,10 +100,5 @@ android {
     defaultConfig {
         minSdk = 24
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
 }
 
