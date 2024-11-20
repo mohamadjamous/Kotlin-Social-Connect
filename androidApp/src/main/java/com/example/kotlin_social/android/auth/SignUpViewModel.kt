@@ -89,6 +89,8 @@ class SignUpViewModel : ViewModel() {
 
 }
 
+
+
 data class SignUpUiState(
     var username: String = "",
     var email: String = "",
