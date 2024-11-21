@@ -144,7 +144,8 @@ fun GoToLogin(
             SmallSpacing
         )
     ) {
-        Text(text = "Have already an account?", style = MaterialTheme.typography.caption)
+        Text(text = "Have already an account?", style = MaterialTheme.typography.caption,
+            color = MaterialTheme.colors.primary)
         Text(
             text = "Login",
             style = MaterialTheme.typography.caption,

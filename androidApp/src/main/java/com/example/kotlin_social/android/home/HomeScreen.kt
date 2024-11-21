@@ -9,7 +9,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 
 @Composable
 @Destination
-fun HomeScreen(modifier: Modifier) {
+fun HomeScreen(modifier: Modifier = Modifier) {
 
 
     Box(modifier = Modifier.fillMaxSize()) {

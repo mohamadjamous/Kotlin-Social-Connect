@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlin_social.android.R
 import com.example.kotlin_social.android.common.theming.Gray
 import com.example.kotlin_social.android.common.theming.SocialAppTheme
+import com.example.kotlin_social.android.common.theming.White
 
 @Composable
 fun CustomTextField(
@@ -58,7 +59,8 @@ fun CustomTextField(
                 Gray
             },
             unfocusedIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = Color.Transparent
+            focusedIndicatorColor = Color.Transparent,
+            textColor = White
         ),
         trailingIcon = if (isPasswordTextField){
             {

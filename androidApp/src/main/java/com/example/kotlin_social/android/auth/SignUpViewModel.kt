@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
 class SignUpViewModel : ViewModel() {
@@ -30,6 +31,7 @@ class SignUpViewModel : ViewModel() {
 
     fun signup() {
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+        val firestore: FirebaseFirestore = FirebaseFirestore.getInstance() // Initialize Firestore
         uiState = uiState.copy(isAuthenticating = true)
 
         viewModelScope.launch {
@@ -63,15 +65,40 @@ class SignUpViewModel : ViewModel() {
                             user?.updateProfile(profileUpdates)
                                 ?.addOnCompleteListener { updateTask ->
                                     if (updateTask.isSuccessful) {
-                                        uiState = uiState.copy(
-                                            isAuthenticating = false,
-                                            authenticationSucceed = true
+
+                                        println("User created successfully!")
+
+                                        // Add user data to Firestore
+                                        val userData = hashMapOf(
+                                            "username" to uiState.username,
+                                            "email" to uiState.email,
+                                            "userId" to user.uid
                                         )
+
+                                        firestore.collection("users")
+                                            .document(user.uid)
+                                            .set(userData)
+                                            .addOnSuccessListener {
+                                                println("User data added to Firestore successfully!")
+                                                uiState = uiState.copy(
+                                                    isAuthenticating = false,
+                                                    authenticationSucceed = true
+                                                )
+                                            }
+                                            .addOnFailureListener { e ->
+                                                uiState = uiState.copy(
+                                                    isAuthenticating = false,
+                                                    authErrorMessage = task.exception?.message
+                                                )
+                                                println("Error adding user data to Firestore: ${e.message}")
+                                            }
+
                                     } else {
                                         uiState = uiState.copy(
                                             isAuthenticating = false,
                                             authErrorMessage = updateTask.exception?.message
                                         )
+                                        println("Error updating username: ${updateTask.exception?.message}")
                                     }
                                 }
                         } else {
@@ -79,13 +106,13 @@ class SignUpViewModel : ViewModel() {
                                 isAuthenticating = false,
                                 authErrorMessage = task.exception?.message
                             )
+                            println("Error creating user: ${task.exception?.message}")
                         }
                     }
             }
-
         }
-
     }
+
 
 }
 
