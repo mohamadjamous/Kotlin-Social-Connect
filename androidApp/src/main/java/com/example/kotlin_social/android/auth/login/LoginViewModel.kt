@@ -9,11 +9,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
-class LoginViewModel(): ViewModel() {
+class LoginViewModel() : ViewModel() {
     var uiState by mutableStateOf(LoginUiState())
         private set
 
-    fun signIn(){
+    fun signIn() {
 
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         viewModelScope.launch {
@@ -29,16 +29,16 @@ class LoginViewModel(): ViewModel() {
                     isAuthenticating = false,
                     authErrorMessage = "Invalid Email or Password"
                 )
-            }else{
+            } else {
 
                 firebaseAuth.signInWithEmailAndPassword(uiState.email, uiState.password)
                     .addOnCompleteListener {
-                        if (!it.isSuccessful){
+                        if (!it.isSuccessful) {
                             uiState = uiState.copy(
                                 isAuthenticating = false,
                                 authErrorMessage = it.exception?.message
                             )
-                        }else{
+                        } else {
                             uiState = uiState.copy(
                                 isAuthenticating = false,
                                 authenticationSucceed = true
@@ -56,16 +56,16 @@ class LoginViewModel(): ViewModel() {
         }
     }
 
-    fun updateEmail(input: String){
+    fun updateEmail(input: String) {
         uiState = uiState.copy(email = input)
     }
 
-    fun updatePassword(input: String){
+    fun updatePassword(input: String) {
         uiState = uiState.copy(password = input)
     }
 
     // TODO implement user login firebase
-    fun loginUser(email: String, password: String){
+    fun loginUser(email: String, password: String) {
 
     }
 }
