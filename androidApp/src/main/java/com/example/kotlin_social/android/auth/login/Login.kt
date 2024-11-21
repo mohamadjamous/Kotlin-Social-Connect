@@ -1,11 +1,13 @@
 package com.example.kotlin_social.android.auth.login
 
 import androidx.compose.runtime.Composable
+import com.example.kotlin_social.android.destinations.HomeScreenDestination
+import com.example.kotlin_social.android.destinations.SignUpDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.koinViewModel
 
-@Destination
+@Destination(start = true)
 @Composable
 fun Login(
     navigator: DestinationsNavigator
@@ -16,8 +18,7 @@ fun Login(
         uiState = viewModel.uiState,
         onEmailChange = viewModel::updateEmail,
         onPasswordChange = viewModel::updatePassword,
-        onNavigateToHome = { /*TODO*/ },
-        onSignInClick = { /*TODO*/ }) {
-        
-    }
+        onSignInClick = viewModel::signIn,
+        onNavigateToSignup = { navigator.navigate(SignUpDestination) },
+        onNavigateToHome = { navigator.navigate(HomeScreenDestination) })
 }

@@ -136,7 +136,8 @@ fun GoToSignup(
             SmallSpacing
         )
     ) {
-        Text(text = "Don't have an account?", style = MaterialTheme.typography.caption)
+        Text(text = "Don't have an account?", style = MaterialTheme.typography.caption,
+            color = MaterialTheme.colors.primary)
         Text(
             text = "SignUp",
             style = MaterialTheme.typography.caption,

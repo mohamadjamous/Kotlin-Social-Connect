@@ -5,34 +5,56 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
 class LoginViewModel(): ViewModel() {
     var uiState by mutableStateOf(LoginUiState())
         private set
 
-//    fun signIn(){
-//        viewModelScope.launch {
-//            uiState = uiState.copy(isAuthenticating = true)
-//
-//            val authResultData = signInUseCase(uiState.email, uiState.password)
-//
-//            uiState = when(authResultData){
-//                is Result.Error -> {
-//                    uiState.copy(
-//                        isAuthenticating = false,
-//                        authErrorMessage = authResultData.message
-//                    )
-//                }
-//                is Result.Success -> {
-//                    uiState.copy(
-//                        isAuthenticating = false,
-//                        authenticationSucceed = true
-//                    )
-//                }
-//            }
-//        }
-//    }
+    fun signIn(){
+
+        val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+        viewModelScope.launch {
+            uiState = uiState.copy(isAuthenticating = true)
+
+            if (uiState.email.isBlank() || uiState.email.length < 3) {
+                uiState = uiState.copy(
+                    isAuthenticating = false,
+                    authErrorMessage = "Invalid Email or Password"
+                )
+            } else if (uiState.password.isBlank() || uiState.password.length < 3) {
+                uiState = uiState.copy(
+                    isAuthenticating = false,
+                    authErrorMessage = "Invalid Email or Password"
+                )
+            }else{
+
+                firebaseAuth.signInWithEmailAndPassword(uiState.email, uiState.password)
+                    .addOnCompleteListener {
+                        if (!it.isSuccessful){
+                            uiState = uiState.copy(
+                                isAuthenticating = false,
+                                authErrorMessage = it.exception?.message
+                            )
+                        }else{
+                            uiState = uiState.copy(
+                                isAuthenticating = false,
+                                authenticationSucceed = true
+                            )
+                        }
+                    }.addOnFailureListener {
+                        uiState = uiState.copy(
+                            isAuthenticating = false,
+                            authErrorMessage = it.message
+                        )
+                    }
+            }
+
+
+        }
+    }
 
     fun updateEmail(input: String){
         uiState = uiState.copy(email = input)
