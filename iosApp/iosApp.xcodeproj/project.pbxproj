@@ -86,6 +86,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				CB9A1C892CF4F3DE0082B52D /* ViewModel */,
 				CB484B262CEFBD0A00BA8D46 /* GoogleService-Info (2).plist */,
 				CB3606CB2CEF4A8E003CCB7D /* Views */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -122,6 +123,13 @@
 				CB3606D52CEF4C75003CCB7D /* GoToLoginView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		CB9A1C892CF4F3DE0082B52D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +178,8 @@
 				Base,
 			);
 			mainGroup = 7555FF72242A565900829871;
+			packageReferences = (
+			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

@@ -71,4 +71,7 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.28.0")
 
+    implementation("com.google.firebase:firebase-common-ktx:20.3.3")
+
+
 }
