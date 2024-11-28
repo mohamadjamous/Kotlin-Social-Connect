@@ -3,13 +3,16 @@ package com.example.kotlin_social.android.auth.login
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kotlin_social.android.common.datastore.UserSettings
+import com.example.kotlin_social.auth.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
-class LoginViewModel() : ViewModel() {
+class LoginViewModel(private val datastore: DataStore<UserSettings>) : ViewModel() {
     var uiState by mutableStateOf(LoginUiState())
         private set
 
@@ -24,6 +27,7 @@ class LoginViewModel() : ViewModel() {
                     isAuthenticating = false,
                     authErrorMessage = "Invalid Email or Password"
                 )
+
             } else if (uiState.password.isBlank() || uiState.password.length < 3) {
                 uiState = uiState.copy(
                     isAuthenticating = false,
@@ -38,12 +42,14 @@ class LoginViewModel() : ViewModel() {
                                 isAuthenticating = false,
                                 authErrorMessage = it.exception?.message
                             )
+
                         } else {
                             uiState = uiState.copy(
                                 isAuthenticating = false,
                                 authenticationSucceed = true
                             )
                         }
+
                     }.addOnFailureListener {
                         uiState = uiState.copy(
                             isAuthenticating = false,

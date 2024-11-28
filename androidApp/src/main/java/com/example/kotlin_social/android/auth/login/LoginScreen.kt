@@ -39,6 +39,7 @@ import com.example.kotlin_social.android.common.theming.SocialAppTheme
 import com.ramcosta.composedestinations.annotation.Destination
 
 
+@Destination
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,

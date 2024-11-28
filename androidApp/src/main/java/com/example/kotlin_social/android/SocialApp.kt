@@ -1,29 +1,61 @@
 package com.example.kotlin_social.android
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.kotlin_social.android.common.components.AppBar
+import com.example.kotlin_social.android.destinations.HomeScreenDestination
+import com.example.kotlin_social.android.destinations.LoginScreenDestination
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
-import com.ramcosta.composedestinations.utils.currentDestinationAsState
 
 @Composable
-fun SocialApp() {
+fun SocialApp(id : String) {
 
-    val navController = rememberNavController()
+    val navHostController = rememberNavController()
+    val scaffoldState = rememberScaffoldState()
+    val systemUiController = rememberSystemUiController()
 
-    DestinationsNavHost(navGraph = NavGraphs.root, navController = navController)
+    val isSystemInDark = isSystemInDarkTheme()
+    val statusBarColor = if (isSystemInDark){
+        MaterialTheme.colors.surface
+    }else{
+        MaterialTheme.colors.surface.copy(alpha = 0.95f)
+    }
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = statusBarColor,
+            darkIcons = !isSystemInDark
+        )
+    }
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = {
+            AppBar(modifier = Modifier, navHostController = navHostController)
+        }
+
+    ){innerPaddings ->
+        DestinationsNavHost(
+            modifier = Modifier.padding(innerPaddings) ,navGraph = NavGraphs.root, navController = navHostController)
+    }
+
+
+    LaunchedEffect(key1 = Unit) {
+        if (id != null && id.isEmpty()) {
+            navHostController.navigate(LoginScreenDestination.route) {
+                popUpTo(HomeScreenDestination.route) {
+                    inclusive = true
+                }
+            }
+        }
+    }
 
 }

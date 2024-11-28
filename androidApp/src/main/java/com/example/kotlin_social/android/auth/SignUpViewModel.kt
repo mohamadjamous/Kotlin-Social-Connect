@@ -3,14 +3,17 @@ package com.example.kotlin_social.android.auth
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kotlin_social.android.common.datastore.UserSettings
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel(private val dataStore: DataStore<UserSettings>) : ViewModel() {
 
     var uiState by mutableStateOf(SignUpUiState())
         private set
@@ -33,6 +36,8 @@ class SignUpViewModel : ViewModel() {
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         val firestore: FirebaseFirestore = FirebaseFirestore.getInstance() // Initialize Firestore
         uiState = uiState.copy(isAuthenticating = true)
+
+
 
         viewModelScope.launch {
 
@@ -84,6 +89,10 @@ class SignUpViewModel : ViewModel() {
                                                     isAuthenticating = false,
                                                     authenticationSucceed = true
                                                 )
+
+                                                dataStore.updateData {
+
+                                                }
                                             }
                                             .addOnFailureListener { e ->
                                                 uiState = uiState.copy(

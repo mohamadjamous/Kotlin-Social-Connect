@@ -14,7 +14,7 @@ import org.koin.androidx.compose.koinViewModel
 fun SignUp(
     navigator: DestinationsNavigator
 ) {
-   val viewModel: SignUpViewModel = koinViewModel()
+    val viewModel: SignUpViewModel = koinViewModel()
 
     SignUpScreen(
         uiState = viewModel.uiState,
@@ -22,10 +22,10 @@ fun SignUp(
         onEmailChange = viewModel::updateEmail,
         onPasswordChange = viewModel::updatePassword,
         onNavigateToLogin = {
-                            navigator.navigate(LoginDestination)
+            navigator.navigate(LoginDestination)
         },
         onNavigateToHome = {
-                           navigator.navigate(HomeScreenDestination)
+            navigator.navigate(HomeScreenDestination)
         },
         onSignUpClick = viewModel::signup
     )
