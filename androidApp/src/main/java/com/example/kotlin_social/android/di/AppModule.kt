@@ -19,7 +19,7 @@ val appModule = module {
     viewModel { HomeScreenViewModel() }
 
 
-    
+      
     single {
         DataStoreFactory.create(
             serializer = UserSettingsSerializer,
