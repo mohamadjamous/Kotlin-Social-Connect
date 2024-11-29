@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     id("com.google.devtools.ksp") version "1.9.10-1.0.13"
     alias(libs.plugins.googleGmsGoogleServices) // Depends on your kotlin version
+    //Kotlinx Serialization
+    kotlin("plugin.serialization") version "1.9.10"
 }
 
 android {

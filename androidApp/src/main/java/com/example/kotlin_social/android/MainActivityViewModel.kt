@@ -6,9 +6,8 @@ import com.example.kotlin_social.android.common.datastore.UserSettings
 import com.example.kotlin_social.android.common.datastore.toAuthResultData
 import kotlinx.coroutines.flow.map
 
-class MainActivityViewModel(datastore: DataStore<UserSettings>) : ViewModel() {
+class MainActivityViewModel(private val datastore: DataStore<UserSettings>) : ViewModel() {
 
     val authState = datastore.data.map { it.toAuthResultData().id }
-
 
 }

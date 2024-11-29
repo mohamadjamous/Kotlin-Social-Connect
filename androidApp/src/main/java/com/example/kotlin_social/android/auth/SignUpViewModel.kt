@@ -11,9 +11,14 @@ import com.example.kotlin_social.android.common.datastore.UserSettings
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(private val dataStore: DataStore<UserSettings>) : ViewModel() {
+
+    private val dataStore1 = this.dataStore
 
     var uiState by mutableStateOf(SignUpUiState())
         private set
@@ -32,6 +37,7 @@ class SignUpViewModel(private val dataStore: DataStore<UserSettings>) : ViewMode
         uiState = uiState.copy(password = password)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun signup() {
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         val firestore: FirebaseFirestore = FirebaseFirestore.getInstance() // Initialize Firestore
@@ -90,9 +96,20 @@ class SignUpViewModel(private val dataStore: DataStore<UserSettings>) : ViewMode
                                                     authenticationSucceed = true
                                                 )
 
-                                                dataStore.updateData {
-
+                                                GlobalScope.launch(Dispatchers.IO) {
+                                                    dataStore1.updateData {
+                                                        UserSettings(
+                                                            id = firebaseAuth.currentUser!!.uid,
+                                                            name = "",
+                                                            bio = "",
+                                                            avatar = null,
+                                                            followersCount = 0,
+                                                            followingCount = 0
+                                                        )
+                                                    }
                                                 }
+
+
                                             }
                                             .addOnFailureListener { e ->
                                                 uiState = uiState.copy(
@@ -124,7 +141,6 @@ class SignUpViewModel(private val dataStore: DataStore<UserSettings>) : ViewMode
 
 
 }
-
 
 
 data class SignUpUiState(

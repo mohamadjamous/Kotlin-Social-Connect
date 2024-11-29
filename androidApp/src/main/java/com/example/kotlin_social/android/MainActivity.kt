@@ -16,7 +16,9 @@ class MainActivity : ComponentActivity() {
         
         setContent {
             SocialAppTheme {
-               SocialApp(id = viewModel.authState.collectAsStateWithLifecycle(initialValue = null).toString())
+                val uid = viewModel.authState.collectAsStateWithLifecycle(initialValue = null).value
+               println("CurrentUserId: $uid")
+               SocialApp(uid = uid)
             }
         }
     }

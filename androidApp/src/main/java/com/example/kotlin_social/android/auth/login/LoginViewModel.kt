@@ -7,15 +7,18 @@ import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kotlin_social.android.common.datastore.UserSettings
-import com.example.kotlin_social.auth.data.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val datastore: DataStore<UserSettings>) : ViewModel() {
+class LoginViewModel(
+    private val datastore: DataStore<UserSettings>) : ViewModel() {
     var uiState by mutableStateOf(LoginUiState())
         private set
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun signIn() {
 
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -48,6 +51,19 @@ class LoginViewModel(private val datastore: DataStore<UserSettings>) : ViewModel
                                 isAuthenticating = false,
                                 authenticationSucceed = true
                             )
+
+                            GlobalScope.launch(Dispatchers.IO) {
+                                datastore.updateData {
+                                    UserSettings(
+                                        id = firebaseAuth.currentUser!!.uid,
+                                        name = "",
+                                        bio = "",
+                                        avatar = null,
+                                        followersCount = 0,
+                                        followingCount = 0
+                                    )
+                                }
+                            }
                         }
 
                     }.addOnFailureListener {
@@ -70,10 +86,7 @@ class LoginViewModel(private val datastore: DataStore<UserSettings>) : ViewModel
         uiState = uiState.copy(password = input)
     }
 
-    // TODO implement user login firebase
-    fun loginUser(email: String, password: String) {
 
-    }
 }
 
 data class LoginUiState(

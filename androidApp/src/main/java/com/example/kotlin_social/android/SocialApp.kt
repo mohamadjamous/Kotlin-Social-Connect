@@ -11,22 +11,24 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.kotlin_social.android.common.components.AppBar
+import com.example.kotlin_social.android.common.datastore.UserSettings
 import com.example.kotlin_social.android.destinations.HomeScreenDestination
+import com.example.kotlin_social.android.destinations.LoginDestination
 import com.example.kotlin_social.android.destinations.LoginScreenDestination
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
 
 @Composable
-fun SocialApp(id : String) {
+fun SocialApp(uid: String?) {
 
     val navHostController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
     val systemUiController = rememberSystemUiController()
 
     val isSystemInDark = isSystemInDarkTheme()
-    val statusBarColor = if (isSystemInDark){
+    val statusBarColor = if (isSystemInDark) {
         MaterialTheme.colors.surface
-    }else{
+    } else {
         MaterialTheme.colors.surface.copy(alpha = 0.95f)
     }
     SideEffect {
@@ -42,15 +44,18 @@ fun SocialApp(id : String) {
             AppBar(modifier = Modifier, navHostController = navHostController)
         }
 
-    ){innerPaddings ->
+    ) { innerPaddings ->
         DestinationsNavHost(
-            modifier = Modifier.padding(innerPaddings) ,navGraph = NavGraphs.root, navController = navHostController)
+            modifier = Modifier.padding(innerPaddings),
+            navGraph = NavGraphs.root,
+            navController = navHostController
+        )
     }
 
 
-    LaunchedEffect(key1 = Unit) {
-        if (id != null && id.isEmpty()) {
-            navHostController.navigate(LoginScreenDestination.route) {
+    LaunchedEffect(key1 = uid) {
+        if (uid != null && uid.isEmpty()) {
+            navHostController.navigate(LoginDestination.route) {
                 popUpTo(HomeScreenDestination.route) {
                     inclusive = true
                 }

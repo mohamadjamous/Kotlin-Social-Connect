@@ -45,6 +45,12 @@ kotlin {
 
                 implementation("androidx.datastore:datastore-preferences-core:$datastoreVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0-RC.2")
+
+//                implementation("dev.gitlive:firebase-firestore:1.8.1") // This line
+//                implementation("dev.gitlive:firebase-auth:2.1.0") // This line
+//                implementation("dev.gitlive:firebase-storage:2.1.0") // This line
+//                implementation("dev.gitlive:firebase-common:1.8.1")// This line
+//                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1") // This line
             }
         }
 
@@ -100,5 +106,8 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+dependencies {
+    implementation(libs.firebase.auth.ktx)
 }
 

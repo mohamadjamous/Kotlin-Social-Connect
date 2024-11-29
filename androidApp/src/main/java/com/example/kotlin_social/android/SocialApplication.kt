@@ -10,8 +10,8 @@ class SocialApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin{
-            androidContext(this@SocialApplication)
             modules(appModule)
+            androidContext(this@SocialApplication)
         }
     }
 }
