@@ -18,7 +18,6 @@ val appModule = module {
     viewModel { MainActivityViewModel(get()) }
     viewModel { HomeScreenViewModel() }
 
-
     
     single {
         DataStoreFactory.create(
