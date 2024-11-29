@@ -76,4 +76,6 @@ dependencies {
     implementation("com.google.firebase:firebase-common-ktx:20.3.3")
 
 
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
 }
