@@ -31,11 +31,11 @@ import com.example.kotlin_social.android.common.theming.SocialAppTheme
 
 @Composable
 fun OnBoardingSection(
+    modifier: Modifier = Modifier,
     users: List<FollowsUser>,
     onUserClick: (FollowsUser) -> Unit,
     onFollowButtonClick: (Boolean, FollowsUser) -> Unit,
-    onBoardingFinish: () -> Unit,
-    modifier: Modifier = Modifier
+    onBoardingFinish: () -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxWidth()

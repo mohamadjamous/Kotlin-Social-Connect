@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.kotlin_social.android.common.components.AppBar
 import com.example.kotlin_social.android.common.datastore.UserSettings
-import com.example.kotlin_social.android.destinations.HomeScreenDestination
+import com.example.kotlin_social.android.destinations.HomeDestination
 import com.example.kotlin_social.android.destinations.LoginDestination
 import com.example.kotlin_social.android.destinations.LoginScreenDestination
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -56,7 +56,7 @@ fun SocialApp(uid: String?) {
     LaunchedEffect(key1 = uid) {
         if (uid != null && uid.isEmpty()) {
             navHostController.navigate(LoginDestination.route) {
-                popUpTo(HomeScreenDestination.route) {
+                popUpTo(HomeDestination.route) {
                     inclusive = true
                 }
             }

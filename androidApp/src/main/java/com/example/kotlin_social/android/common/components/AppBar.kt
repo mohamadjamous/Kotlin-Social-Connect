@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.example.kotlin_social.android.R
 import com.example.kotlin_social.android.common.theming.SmallElevation
-import com.example.kotlin_social.android.destinations.HomeScreenDestination
+import com.example.kotlin_social.android.destinations.HomeDestination
 import com.example.kotlin_social.android.destinations.LoginDestination
 import com.example.kotlin_social.android.destinations.SignUpDestination
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
@@ -37,7 +37,7 @@ fun AppBar (modifier: Modifier = Modifier,
             modifier = modifier,
             backgroundColor = MaterialTheme.colors.surface,
             actions = {
-                AnimatedVisibility(visible = currentDestination?.route == HomeScreenDestination.route) {
+                AnimatedVisibility(visible = currentDestination?.route == HomeDestination.route) {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(
                             painter = painterResource(id = R.drawable.person_circle_icon),
@@ -82,7 +82,7 @@ private fun getAppBarTitle(currentDestinationRoute: String?): Int {
 private fun shouldShowNavigationIcon(currentDestinationRoute: String?): Boolean {
     return !(currentDestinationRoute == LoginDestination.route
             || currentDestinationRoute == SignUpDestination.route
-            || currentDestinationRoute == HomeScreenDestination.route
+            || currentDestinationRoute == HomeDestination.route
             || currentDestinationRoute == null
             )
 }
