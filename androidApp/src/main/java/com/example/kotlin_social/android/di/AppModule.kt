@@ -17,6 +17,8 @@ val appModule = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { MainActivityViewModel(get()) }
     viewModel { HomeScreenViewModel() }
+
+
     
     single {
         DataStoreFactory.create(
