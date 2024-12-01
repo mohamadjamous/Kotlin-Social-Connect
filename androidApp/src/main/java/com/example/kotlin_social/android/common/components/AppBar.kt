@@ -78,6 +78,7 @@ private fun getAppBarTitle(currentDestinationRoute: String?): Int {
         else -> R.string.no_destination_title
     }
 
+
     
 }
 
