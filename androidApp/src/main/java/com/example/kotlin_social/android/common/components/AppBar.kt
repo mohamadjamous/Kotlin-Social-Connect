@@ -38,7 +38,7 @@ fun AppBar (modifier: Modifier = Modifier,
             backgroundColor = MaterialTheme.colors.surface,
             actions = {
                 AnimatedVisibility(visible = currentDestination?.route == HomeDestination.route) {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = { navHostController.navigateUp() }) {
                         Icon(
                             painter = painterResource(id = R.drawable.person_circle_icon),
                             contentDescription = null

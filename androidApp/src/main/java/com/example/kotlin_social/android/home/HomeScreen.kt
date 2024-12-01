@@ -90,7 +90,13 @@ fun HomeScreen(
 
             items(items = postsFeedUiState.posts, key = { post -> post.id}){
 
-                PostListItem(post = it, onProfileClick = onProfileClick, onLikeClick = onLikeClick, onCommentClick = onCommentClick)
+                PostListItem(
+                    post = it, onProfileClick =
+                    onProfileClick,
+                    onLikeClick = onLikeClick,
+                    onCommentClick = onCommentClick,
+                    onPostClick = onPostClick
+                )
 
             }
 

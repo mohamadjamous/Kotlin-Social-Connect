@@ -55,7 +55,6 @@ fun PostListItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            //.aspectRatio(ratio = 0.7f)
             .background(color = MaterialTheme.colors.surface)
             //.clickable { onPostClick(post) }
             .let { mod ->
