@@ -77,6 +77,7 @@ private fun getAppBarTitle(currentDestinationRoute: String?): Int {
 //        CreatePostDestination.route -> R.string.create_post_destination_title
         else -> R.string.no_destination_title
     }
+    
 }
 
 
