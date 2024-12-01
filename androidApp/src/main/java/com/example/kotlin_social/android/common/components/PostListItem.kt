@@ -82,7 +82,8 @@ fun PostListItem(
             contentDescription = null,
             modifier = modifier
                 .fillMaxWidth()
-                .aspectRatio(ratio = 1.0f),
+                .aspectRatio(ratio = 1.0f)
+                .padding(top = 10.dp),
             contentScale = ContentScale.Crop,
             placeholder = if (MaterialTheme.colors.isLight) {
                 painterResource(id = R.drawable.light_image_place_holder)
@@ -102,7 +103,8 @@ fun PostListItem(
         Text(
             text = post.text,
             style = MaterialTheme.typography.body2,
-            modifier = modifier.padding(horizontal = LargeSpacing),
+            modifier = modifier.padding(horizontal = LargeSpacing)
+                .padding(bottom = 10.dp),
             maxLines = maxLines,
             overflow = TextOverflow.Ellipsis
         )

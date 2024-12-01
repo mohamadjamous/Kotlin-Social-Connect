@@ -67,7 +67,7 @@ private fun getAppBarTitle(currentDestinationRoute: String?): Int {
     return when (currentDestinationRoute) {
         LoginDestination.route -> R.string.login_destination_title
         SignUpDestination.route -> R.string.signup_destination_title
-//        HomeDestinationination.route -> R.string.home_destination_title
+        HomeDestination.route -> R.string.home_destination_title
 //        PostDetailDestination.route -> R.string.post_detail_destination_title
 //        ProfileDestination.route -> R.string.profile_destination_title
 //        EditProfileDestination.route -> R.string.edit_profile_destination_title

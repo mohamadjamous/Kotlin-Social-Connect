@@ -20,7 +20,7 @@ val appModule = module {
 
 
 
-    
+
     single {
         DataStoreFactory.create(
             serializer = UserSettingsSerializer,
