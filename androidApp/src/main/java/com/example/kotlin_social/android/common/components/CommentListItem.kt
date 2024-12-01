@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.kotlin_social.android.R
+import com.example.kotlin_social.android.common.fake_data.Comment
 import com.example.kotlin_social.android.common.fake_data.sampleComments
 import com.example.kotlin_social.android.common.theming.DarkGray
 import com.example.kotlin_social.android.common.theming.LargeSpacing
@@ -32,10 +33,11 @@ import com.example.kotlin_social.auth.domain.model.PostComment
 @Composable
 fun CommentListItem(
     modifier: Modifier = Modifier,
-    comment: PostComment,
+    comment: Comment,
     onProfileClick: (Long) -> Unit,
-    onMoreIconClick: (PostComment) -> Unit
+    onMoreIconClick: () -> Unit
 ) {
+
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -45,8 +47,8 @@ fun CommentListItem(
     ) {
         CircleImage(
             modifier = modifier.size(30.dp),
-            url = comment.userImageUrl,
-            onClick = { onProfileClick(comment.userId) }
+            url = comment.toDomainComment().userImageUrl,
+            onClick = { onProfileClick(comment.toDomainComment().userId) }
         )
 
         Column(
@@ -59,13 +61,13 @@ fun CommentListItem(
                 )
             ) {
                 Text(
-                    text = comment.userName,
+                    text = comment.toDomainComment().userName,
                     style = MaterialTheme.typography.subtitle2,
                     modifier = modifier.alignByBaseline()
                 )
 
                 Text(
-                    text = comment.createdAt,
+                    text = comment.toDomainComment().createdAt,
                     style = MaterialTheme.typography.caption.copy(fontSize = 11.sp),
                     color = if (MaterialTheme.colors.isLight) {
                         LightGray
@@ -82,12 +84,12 @@ fun CommentListItem(
                     } else {
                         DarkGray
                     },
-                    modifier = modifier.clickable { onMoreIconClick(comment) }
+                    modifier = modifier.clickable { onMoreIconClick() }
                 )
             }
 
             Text(
-                text = comment.content,
+                text = comment.toDomainComment().content,
                 style = MaterialTheme.typography.body2
             )
         }
@@ -100,7 +102,7 @@ fun CommentListItemPreview() {
     SocialAppTheme {
         Surface(color = MaterialTheme.colors.surface) {
             CommentListItem(
-                comment = sampleComments.first().toDomainComment(),
+                comment = sampleComments.first(),
                 onProfileClick = {},
                 onMoreIconClick = {}
             )

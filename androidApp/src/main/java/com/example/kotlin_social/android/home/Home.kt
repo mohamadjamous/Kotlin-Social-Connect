@@ -1,6 +1,7 @@
 package com.example.kotlin_social.android.home
 
 import androidx.compose.runtime.Composable
+import com.example.kotlin_social.android.destinations.PostDetailDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.koinViewModel
@@ -15,7 +16,10 @@ fun Home(
     HomeScreen(
         onBoardingUiState = viewModel.onBoardingUiState,
         postsFeedUiState = viewModel.postsUiState,
-        onProfileClick = {},
+        onPostClick = {
+                      navigator.navigate(PostDetailDestination(it.id))
+        },
+        onProfileClick = { },
         onLikeClick = {},
         onCommentClick = {},
         onUserClick = {},

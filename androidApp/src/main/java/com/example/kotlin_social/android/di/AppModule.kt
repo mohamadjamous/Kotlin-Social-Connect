@@ -8,6 +8,7 @@ import com.example.kotlin_social.android.auth.login.LoginViewModel
 import com.example.kotlin_social.android.common.datastore.UserSettings
 import com.example.kotlin_social.android.common.datastore.UserSettingsSerializer
 import com.example.kotlin_social.android.home.HomeScreenViewModel
+import com.example.kotlin_social.android.post.PostDetailScreenViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -17,6 +18,7 @@ val appModule = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { MainActivityViewModel(get()) }
     viewModel { HomeScreenViewModel() }
+    viewModel { PostDetailScreenViewModel() }
 
 
 
