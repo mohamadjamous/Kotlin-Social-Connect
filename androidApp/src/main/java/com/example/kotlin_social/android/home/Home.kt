@@ -13,9 +13,8 @@ fun Home(
     navigator: DestinationsNavigator
 ) {
     val viewModel: HomeScreenViewModel = koinViewModel()
-
-
     
+
     HomeScreen(
         onBoardingUiState = viewModel.onBoardingUiState,
         postsFeedUiState = viewModel.postsUiState,
