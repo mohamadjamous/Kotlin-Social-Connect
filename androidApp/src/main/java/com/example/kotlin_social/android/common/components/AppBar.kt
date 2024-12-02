@@ -61,8 +61,8 @@ fun AppBar (modifier: Modifier = Modifier,
             }
         )
     }
-
 }
+
 
 private fun getAppBarTitle(currentDestinationRoute: String?): Int {
     return when (currentDestinationRoute) {
@@ -77,9 +77,6 @@ private fun getAppBarTitle(currentDestinationRoute: String?): Int {
 //        CreatePostDestination.route -> R.string.create_post_destination_title
         else -> R.string.no_destination_title
     }
-
-    
-
 
 }
 

@@ -3,6 +3,7 @@ package com.example.kotlin_social.android.di
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import com.example.kotlin_social.android.MainActivityViewModel
+import com.example.kotlin_social.android.account.ProfileViewModel
 import com.example.kotlin_social.android.auth.SignUpViewModel
 import com.example.kotlin_social.android.auth.login.LoginViewModel
 import com.example.kotlin_social.android.common.datastore.UserSettings
@@ -19,7 +20,7 @@ val appModule = module {
     viewModel { MainActivityViewModel(get()) }
     viewModel { HomeScreenViewModel() }
     viewModel { PostDetailScreenViewModel() }
-
+    viewModel { ProfileViewModel() }
 
 
 
