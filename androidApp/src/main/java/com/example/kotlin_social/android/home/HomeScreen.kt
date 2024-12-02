@@ -41,9 +41,9 @@ fun HomeScreen(
     onBoardingUiState: OnBoardingUiState,
     postsFeedUiState: PostsFeedUiState,
     onPostClick: ((Post) -> Unit)? = null,
-    onProfileClick: (userId: Long) -> Unit,
-    onLikeClick: (Post) -> Unit,
-    onCommentClick: (Post) -> Unit,
+    onProfileClick: (userId: Int) -> Unit,
+    onLikeClick: () -> Unit,
+    onCommentClick: () -> Unit,
     onUserClick: (FollowsUser) -> Unit,
     onFollowButtonClick: (Boolean, FollowsUser) -> Unit,
     onBoardingFinish: () -> Unit,
@@ -70,7 +70,7 @@ fun HomeScreen(
                 item {
                     OnBoardingSection(
                         users = onBoardingUiState.users,
-                        onUserClick = { onProfileClick(it.id.toLong()) },
+                        onUserClick = { onProfileClick(it.id) },
                         onFollowButtonClick = onFollowButtonClick
                     ) {
                         onBoardingFinish()
@@ -91,15 +91,13 @@ fun HomeScreen(
             items(items = postsFeedUiState.posts, key = { post -> post.id}){
 
                 PostListItem(
-                    post = it, onProfileClick =
-                    onProfileClick,
+                    post = it, onProfileClick = onProfileClick,
                     onLikeClick = onLikeClick,
                     onCommentClick = onCommentClick,
                     onPostClick = onPostClick
                 )
 
             }
-
         }
 
         PullRefreshIndicator(

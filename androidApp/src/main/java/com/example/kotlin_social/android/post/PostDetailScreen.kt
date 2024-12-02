@@ -45,7 +45,7 @@ fun PostDetailScreen(
     postUiState: PostUiState,
     commentsUiState: CommentsUiState,
     onCommentMoreIconClick: (Comment) -> Unit,
-    onProfileClick: (Long) -> Unit,
+    onProfileClick: (Int) -> Unit,
     onAddCommentClick: () -> Unit,
     fetchData: () -> Unit
 ){

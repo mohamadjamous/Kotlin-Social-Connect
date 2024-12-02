@@ -38,7 +38,6 @@ sealed interface ProfileUiAction {
 
 class ProfileViewModel : ViewModel(){
 
-
     var userInfoUiState by mutableStateOf(UserInfoUiState())
         private set
 
@@ -48,6 +47,7 @@ class ProfileViewModel : ViewModel(){
 
 
     fun fetchProfile(userId: Int){
+
         viewModelScope.launch {
             delay(1000)
 
@@ -56,12 +56,10 @@ class ProfileViewModel : ViewModel(){
                 profile = sampleProfiles.find { it.id == userId }
             )
 
-
             profilePostsUiState = profilePostsUiState.copy(
                 isLoading = false,
                 posts = samplePosts
             )
-
 
         }
     }

@@ -17,6 +17,7 @@ import com.example.kotlin_social.android.common.theming.SmallElevation
 import com.example.kotlin_social.android.destinations.HomeDestination
 import com.example.kotlin_social.android.destinations.LoginDestination
 import com.example.kotlin_social.android.destinations.PostDetailDestination
+import com.example.kotlin_social.android.destinations.ProfileDestination
 import com.example.kotlin_social.android.destinations.SignUpDestination
 import com.ramcosta.composedestinations.utils.currentDestinationAsState
 
@@ -70,7 +71,7 @@ private fun getAppBarTitle(currentDestinationRoute: String?): Int {
         SignUpDestination.route -> R.string.signup_destination_title
         HomeDestination.route -> R.string.home_destination_title
         PostDetailDestination.route -> R.string.post_detail_destination_title
-//        ProfileDestination.route -> R.string.profile_destination_title
+        ProfileDestination.route -> R.string.profile_destination_title
 //        EditProfileDestination.route -> R.string.edit_profile_destination_title
 //        FollowingDestination.route -> R.string.following_text
 //        FollowersDestination.route -> R.string.followers_text

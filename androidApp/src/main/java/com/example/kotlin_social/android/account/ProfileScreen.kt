@@ -87,6 +87,20 @@ fun ProfileScreen(
                     onFollowingClick = onFollowingClick
                 )
             }
+
+            items(
+                items = profilePostsUiState.posts,
+                key = { post -> post.id }
+            ) { post ->
+                PostListItem(
+                    post = post,
+                    onPostClick = onPostClick ,
+                    onProfileClick = {},
+                    onLikeClick = onLikeClick,
+                    onCommentClick = onCommentClick
+                )
+            }
+
         }
     }
 
@@ -162,16 +176,12 @@ fun ProfileHeaderSection(
             }
 
             FollowsButton(
-                text = when {
-                    isCurrentUser -> R.string.edit_profile_label
-                    isFollowing -> R.string.unfollow_text_label
-                    else -> R.string.follow_text_label
-                },
+                text = R.string.follow_text_label,
                 onClick = onButtonClick,
                 modifier = modifier
                     .heightIn(30.dp)
                     .widthIn(100.dp),
-                isOutline = isCurrentUser || isFollowing
+                isOutline = !isCurrentUser || !isFollowing
             )
         }
     }
@@ -226,7 +236,8 @@ private fun ProfileHeaderPreview() {
                 followersCount = 9,
                 followingCount = 2,
                 onButtonClick = { /*TODO*/ },
-                onFollowersClick = { /*TODO*/ }) {
+                onFollowersClick = { /*TODO*/ }
+            ) {
             }
         }
     }

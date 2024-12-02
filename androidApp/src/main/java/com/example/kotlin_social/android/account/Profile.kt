@@ -7,22 +7,21 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 @Destination
-fun Profile(
-    userId: Long,
-    navigator: DestinationsNavigator
-) {
+fun Profile(userId: Int, navigator: DestinationsNavigator) {
 
     val viewModel: ProfileViewModel = koinViewModel()
+    println("UserIdAfter: $userId")
 
     ProfileScreen(
         userInfoUiState = viewModel.userInfoUiState,
         profilePostsUiState = viewModel.profilePostsUiState,
-        onButtonClick = {  },
-        onFollowersClick = {  },
-        onFollowingClick = {  },
+        onButtonClick = { },
+        onFollowersClick = { },
+        onFollowingClick = { },
         onPostClick = { },
-        onLikeClick = {  },
-        onCommentClick = {  },
-        fetchData = { viewModel.fetchProfile(userId.toInt()) })
+        onLikeClick = { },
+        onCommentClick = { },
+        fetchData = { viewModel.fetchProfile(userId) }
+    )
 
 }

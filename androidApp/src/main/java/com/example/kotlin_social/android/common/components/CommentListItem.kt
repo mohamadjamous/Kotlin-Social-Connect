@@ -34,7 +34,7 @@ import com.example.kotlin_social.auth.domain.model.PostComment
 fun CommentListItem(
     modifier: Modifier = Modifier,
     comment: Comment,
-    onProfileClick: (Long) -> Unit,
+    onProfileClick: (Int) -> Unit,
     onMoreIconClick: () -> Unit
 ) {
 
@@ -48,7 +48,7 @@ fun CommentListItem(
         CircleImage(
             modifier = modifier.size(30.dp),
             url = comment.toDomainComment().userImageUrl,
-            onClick = { onProfileClick(comment.toDomainComment().userId) }
+            onClick = { onProfileClick(comment.toDomainComment().userId.toInt()) }
         )
 
         Column(

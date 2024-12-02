@@ -47,9 +47,9 @@ fun PostListItem(
     modifier: Modifier = Modifier,
     post: Post,
     onPostClick: ((Post) -> Unit)? = null,
-    onProfileClick: (userId: Long) -> Unit,
-    onLikeClick: (Post) -> Unit,
-    onCommentClick: (Post) -> Unit,
+    onProfileClick: (userId: Int) -> Unit,
+    onLikeClick: () -> Unit,
+    onCommentClick: () -> Unit,
     maxLines: Int = Int.MAX_VALUE
 ) {
     Column(
@@ -69,11 +69,7 @@ fun PostListItem(
             name = post.authorName,
             profileUrl = post.imageUrl,
             date = post.createdAt,
-            onProfileClick = {
-                onProfileClick(
-                    post.id.toLong()
-                )
-            }
+            onProfileClick = { onProfileClick(post.id.toInt()) }
         )
 
         AsyncImage(
@@ -94,9 +90,9 @@ fun PostListItem(
         PostLikesRow(
             likesCount = post.likesCount,
             commentCount = post.commentCount,
-            onLikeClick = { onLikeClick(post) },
+            onLikeClick = { onLikeClick() },
             isPostLiked = post.isLiked,
-            onCommentClick = { onCommentClick(post) }
+            onCommentClick = { onCommentClick() }
         )
 
         Text(

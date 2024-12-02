@@ -17,7 +17,7 @@ data class Post(
 
 val samplePosts = listOf(
     Post(
-        id = "11",
+        id = "1",
         text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         imageUrl = "https://picsum.photos/400",
         createdAt = "20 min",
@@ -28,7 +28,7 @@ val samplePosts = listOf(
         authorImage = "https://picsum.photos/200"
     ),
     Post(
-        id = "12",
+        id = "2",
         text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         imageUrl = "https://picsum.photos/400",
         createdAt = "May 03, 2023",
@@ -39,7 +39,7 @@ val samplePosts = listOf(
         authorImage = "https://picsum.photos/200"
     ),
     Post(
-        id = "13",
+        id = "3",
         text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         imageUrl = "https://picsum.photos/400",
         createdAt = "Apr 12, 2023",
@@ -50,7 +50,7 @@ val samplePosts = listOf(
         authorImage = "https://picsum.photos/200"
     ),
     Post(
-        id = "14",
+        id = "4",
         text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         imageUrl = "https://picsum.photos/400",
         createdAt = "Mar 31, 2023",
@@ -61,7 +61,7 @@ val samplePosts = listOf(
         authorImage = "https://picsum.photos/200"
     ),
     Post(
-        id = "15",
+        id = "5",
         text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         imageUrl = "https://picsum.photos/400",
         createdAt = "Jan 30, 2023",

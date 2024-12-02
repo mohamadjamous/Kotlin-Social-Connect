@@ -12,21 +12,19 @@ import org.koin.androidx.compose.koinViewModel
 fun Home(
     navigator: DestinationsNavigator
 ) {
-    
+
     val viewModel: HomeScreenViewModel = koinViewModel()
 
 
     HomeScreen(
         onBoardingUiState = viewModel.onBoardingUiState,
         postsFeedUiState = viewModel.postsUiState,
-        onPostClick = {
-                      navigator.navigate(PostDetailDestination(it.id))
-        },
+        onPostClick = { navigator.navigate(PostDetailDestination(it.id)) },
         onProfileClick = { navigator.navigate(ProfileDestination(it)) },
         onLikeClick = {},
         onCommentClick = {},
         onUserClick = {},
-        onFollowButtonClick = {_, _ ->} ,
-        onBoardingFinish = {  },
+        onFollowButtonClick = { _, _ -> },
+        onBoardingFinish = { },
         fetchMoreData = { viewModel.fetchData() })
 }
