@@ -14,7 +14,6 @@ fun Home(
 ) {
     val viewModel: HomeScreenViewModel = koinViewModel()
 
-
     
     HomeScreen(
         onBoardingUiState = viewModel.onBoardingUiState,
