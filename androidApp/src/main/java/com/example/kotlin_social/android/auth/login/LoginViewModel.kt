@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kotlin_social.android.common.datastore.UserSettings
+import com.example.kotlin_social.common.data.local.UserSettings
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers

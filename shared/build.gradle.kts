@@ -68,6 +68,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
 
                 api("androidx.datastore:datastore-preferences:$datastoreVersion")
+
             }
         }
 

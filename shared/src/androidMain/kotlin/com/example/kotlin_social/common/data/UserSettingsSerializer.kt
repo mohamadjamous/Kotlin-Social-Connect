@@ -1,5 +1,6 @@
-package com.example.kotlin_social.android.common.datastore
+package com.example.kotlin_social.common.data
 import androidx.datastore.core.Serializer
+import com.example.kotlin_social.common.data.local.UserSettings
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import java.io.InputStream

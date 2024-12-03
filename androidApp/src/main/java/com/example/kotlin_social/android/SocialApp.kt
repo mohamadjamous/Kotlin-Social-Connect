@@ -11,10 +11,8 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.kotlin_social.android.common.components.AppBar
-import com.example.kotlin_social.android.common.datastore.UserSettings
 import com.example.kotlin_social.android.destinations.HomeDestination
 import com.example.kotlin_social.android.destinations.LoginDestination
-import com.example.kotlin_social.android.destinations.LoginScreenDestination
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
 
