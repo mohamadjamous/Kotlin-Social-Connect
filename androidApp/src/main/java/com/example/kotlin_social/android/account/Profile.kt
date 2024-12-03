@@ -18,7 +18,7 @@ fun Profile(userId: Int, navigator: DestinationsNavigator) {
 
 
 
-    
+
     ProfileScreen(
         userInfoUiState = viewModel.userInfoUiState,
         profilePostsUiState = viewModel.profilePostsUiState,
