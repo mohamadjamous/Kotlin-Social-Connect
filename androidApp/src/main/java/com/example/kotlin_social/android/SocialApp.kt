@@ -19,7 +19,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
 
 @Composable
-fun SocialApp(uid: String?) {
+fun SocialApp(uiState: MainActivityUiState) {
 
     val navHostController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
@@ -53,11 +53,16 @@ fun SocialApp(uid: String?) {
     }
 
 
-    LaunchedEffect(key1 = uid) {
-        if (uid != null && uid.isEmpty()) {
-            navHostController.navigate(LoginDestination.route) {
-                popUpTo(HomeDestination.route) {
-                    inclusive = true
+    when(uiState){
+        MainActivityUiState.Loading -> {}
+        is MainActivityUiState.Success -> {
+            LaunchedEffect(key1 = Unit) {
+                if (uiState.currentUser.id.isEmpty()) {
+                    navHostController.navigate(LoginDestination.route) {
+                        popUpTo(HomeDestination.route) {
+                            inclusive = true
+                        }
+                    }
                 }
             }
         }
