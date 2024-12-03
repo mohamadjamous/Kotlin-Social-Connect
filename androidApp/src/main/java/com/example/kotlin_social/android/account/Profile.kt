@@ -14,6 +14,8 @@ fun Profile(userId: Int, navigator: DestinationsNavigator) {
 
     val viewModel: ProfileViewModel = koinViewModel()
 
+
+
     
     ProfileScreen(
         userInfoUiState = viewModel.userInfoUiState,
