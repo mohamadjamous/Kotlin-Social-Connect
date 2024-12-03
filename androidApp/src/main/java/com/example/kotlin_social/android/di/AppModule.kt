@@ -5,6 +5,7 @@ import androidx.datastore.dataStoreFile
 import com.example.kotlin_social.android.MainActivityViewModel
 import com.example.kotlin_social.android.account.ProfileViewModel
 import com.example.kotlin_social.android.account.edit.EditProfileViewModel
+import com.example.kotlin_social.android.account.follows.FollowsViewModel
 import com.example.kotlin_social.android.auth.SignUpViewModel
 import com.example.kotlin_social.android.auth.login.LoginViewModel
 import com.example.kotlin_social.android.common.datastore.UserSettings
@@ -23,6 +24,7 @@ val appModule = module {
     viewModel { PostDetailScreenViewModel() }
     viewModel { ProfileViewModel() }
     viewModel { EditProfileViewModel() }
+    viewModel { FollowsViewModel() }
 
 
 

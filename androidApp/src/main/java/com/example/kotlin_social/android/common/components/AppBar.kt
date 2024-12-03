@@ -15,6 +15,8 @@ import androidx.navigation.NavHostController
 import com.example.kotlin_social.android.R
 import com.example.kotlin_social.android.common.theming.SmallElevation
 import com.example.kotlin_social.android.destinations.EditProfileDestination
+import com.example.kotlin_social.android.destinations.FollowersDestination
+import com.example.kotlin_social.android.destinations.FollowingDestination
 import com.example.kotlin_social.android.destinations.HomeDestination
 import com.example.kotlin_social.android.destinations.LoginDestination
 import com.example.kotlin_social.android.destinations.PostDetailDestination
@@ -74,8 +76,8 @@ private fun getAppBarTitle(currentDestinationRoute: String?): Int {
         PostDetailDestination.route -> R.string.post_detail_destination_title
         ProfileDestination.route -> R.string.profile_destination_title
         EditProfileDestination.route -> R.string.edit_profile_destination_title
-//        FollowingDestination.route -> R.string.following_text
-//        FollowersDestination.route -> R.string.followers_text
+        FollowingDestination.route -> R.string.following_text
+        FollowersDestination.route -> R.string.followers_text
 //        CreatePostDestination.route -> R.string.create_post_destination_title
         else -> R.string.no_destination_title
     }

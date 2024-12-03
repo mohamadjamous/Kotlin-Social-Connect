@@ -1,6 +1,7 @@
 package com.example.kotlin_social.android.account.follows
 
 import androidx.compose.runtime.Composable
+import com.example.kotlin_social.android.destinations.ProfileDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.koinViewModel
@@ -9,15 +10,13 @@ import org.koin.androidx.compose.koinViewModel
 @Destination
 fun Followers(
     navigator: DestinationsNavigator,
-    userId: Long
+    userId: Int
 ) {
     val viewModel: FollowsViewModel = koinViewModel()
 
     FollowsScreen(
         uiState = viewModel.uiState,
-        userId = userId,
-        followsType = 1,
-        onUiAction = viewModel::onUiAction,
-        onProfileNavigation = { navigator.navigate(ProfileDestination(it)) }
+        fetchFollows = { viewModel.fetchFollows(userId, 2) },
+        onItemClick = {navigator.navigate(ProfileDestination(it))}
     )
 }
