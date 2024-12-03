@@ -13,7 +13,6 @@ import org.koin.androidx.compose.koinViewModel
 fun Profile(userId: Int, navigator: DestinationsNavigator) {
 
     val viewModel: ProfileViewModel = koinViewModel()
-    println("UserIdAfter: $userId")
 
     ProfileScreen(
         userInfoUiState = viewModel.userInfoUiState,
