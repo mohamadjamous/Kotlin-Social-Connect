@@ -3,6 +3,7 @@ package com.example.kotlin_social.android.common.fake_data
 data class FollowsUser(
     val id: Int,
     val name: String,
+    val bio: String = "Hello there, welcome to social app",
     val profileUrl: String,
     val isFollowing: Boolean = false
 )
