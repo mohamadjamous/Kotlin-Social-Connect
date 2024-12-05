@@ -27,12 +27,5 @@ val appModule = module {
 
 
 
-    single {
-        DataStoreFactory.create(
-            serializer = UserSettingsSerializer,
-            produceFile = {
-                androidContext().dataStoreFile("app_user_settings")
-            }
-        )
-    }
+
 }
