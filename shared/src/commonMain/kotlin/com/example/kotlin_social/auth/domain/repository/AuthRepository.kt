@@ -10,10 +10,6 @@ class AuthRepository {
 
 
 
-        
-
-
-
 
     // Sign Up method
     suspend fun signUp(
