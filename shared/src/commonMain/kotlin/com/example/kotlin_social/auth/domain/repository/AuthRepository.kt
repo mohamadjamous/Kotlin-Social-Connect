@@ -8,8 +8,9 @@ class AuthRepository {
 
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.
 
-
         
+
+
     // Sign Up method
     suspend fun signUp(
         name: String,
