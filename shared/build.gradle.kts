@@ -50,7 +50,7 @@ kotlin {
                 implementation("dev.gitlive:firebase-auth:2.1.0") // This line
                 implementation("dev.gitlive:firebase-storage:2.1.0") // This line
                 implementation("dev.gitlive:firebase-common:1.8.1")// This line
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1") // This line
+//                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1") // This line
 
             }
         }
