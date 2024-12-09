@@ -4,6 +4,7 @@ import com.example.kotlin_social.auth.domain.model.AuthResultData
 import kotlinx.serialization.Serializable
 
 
+
 @Serializable
 data class UserSettings(
     val id: String = "",
