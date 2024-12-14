@@ -9,7 +9,9 @@
         android:supportsRtl="true"
         android:name=".SocialApplication"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Splash">
+        android:theme="@style/Theme.Splash"
+        android:label="KotlinSocial"
+        >
 
         <activity
             android:name=".MainActivity"
