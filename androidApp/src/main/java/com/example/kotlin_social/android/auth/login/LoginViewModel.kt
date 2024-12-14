@@ -13,7 +13,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val datastore: DataStore<UserSettings>) : ViewModel() {
+class LoginViewModel(
+    private val datastore: DataStore<UserSettings>
+) : ViewModel() {
     var uiState by mutableStateOf(LoginUiState())
         private set
 

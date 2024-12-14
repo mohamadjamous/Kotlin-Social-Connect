@@ -15,7 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class SignUpViewModel(private val dataStore: DataStore<UserSettings>) : ViewModel() {
+class SignUpViewModel(
+    private val dataStore: DataStore<UserSettings>
+) : ViewModel() {
 
     private val dataStore1 = this.dataStore
 

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
-class MainActivityViewModel(private val datastore: DataStore<UserSettings>) : ViewModel() {
+class MainActivityViewModel(datastore: DataStore<UserSettings>) : ViewModel() {
 
     val uiState: StateFlow<MainActivityUiState> = datastore.data.map {
         MainActivityUiState.Success(it)
