@@ -19,4 +19,4 @@ private val utilityModule = module {
 }
 
 
-//fun getSharedModules() = listOf(platformModule, authModule, utilityModule)
+fun getSharedModules() = listOf(platformModule, authModule, utilityModule)

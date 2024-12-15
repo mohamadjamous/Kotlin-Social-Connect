@@ -9,15 +9,17 @@ import com.example.kotlin_social.common.data.local.UserPreferences
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-//actual val platformModule = module {
-//    single<UserPreferences> { AndroidUserPreferences(get()) }
-//
-//    single {
-//        DataStoreFactory.create(
-//            serializer = UserSettingsSerializer,
-//            produceFile = {
-//                androidContext().dataStoreFile(PREFERENCES_FILE_NAME)
-//            }
-//        )
-//    }
-//}
+actual val platformModule = module {
+    single<UserPreferences> { AndroidUserPreferences(get()) }
+
+    single {
+        DataStoreFactory.create(
+            serializer = UserSettingsSerializer,
+            produceFile = {
+                androidContext().dataStoreFile(
+                    PREFERENCES_FILE_NAME
+                )
+            }
+        )
+    }
+}

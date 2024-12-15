@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
+    implementation(platform(libs.firebase.bom))
     debugImplementation(libs.compose.ui.tooling)
 
     implementation("io.github.raamcosta.compose-destinations:core:1.8.38-beta")
@@ -75,5 +76,7 @@ dependencies {
 
 
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+
 
 }

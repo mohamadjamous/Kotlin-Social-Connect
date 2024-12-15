@@ -21,6 +21,8 @@ internal class AuthRepositoryImpl(
         password: String
     ): Result<AuthResultData> {
 
+        // right shared firebase code for sign in and sign up
+
         return withContext(dispatcher.io) {
             try {
 

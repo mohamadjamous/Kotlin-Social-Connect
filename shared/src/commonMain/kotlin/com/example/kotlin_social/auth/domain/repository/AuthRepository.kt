@@ -3,7 +3,7 @@ package com.example.kotlin_social.auth.domain.repository
 import com.example.kotlin_social.auth.domain.model.AuthResultData
 import com.example.kotlin_social.common.util.Result
 
-internal interface AuthRepository {
+interface AuthRepository {
 
     suspend fun signUp(
         name: String,
@@ -11,7 +11,10 @@ internal interface AuthRepository {
         password: String
     ): Result<AuthResultData>
 
-    suspend fun signIn(email: String, password: String): Result<AuthResultData>
+    suspend fun signIn(
+        email: String,
+        password: String
+    ): Result<AuthResultData>
 }
 
 
